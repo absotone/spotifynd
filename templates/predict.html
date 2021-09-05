@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/predict.css">
+    <title>Predictions</title>
+</head>
+<body>
+
+
+    {% if displayForm %}
+
+        <form action="{{ url_for('predict')}}" method="post">
+
+            <label for="danceability">danceability:</label>
+            <input type="text" id="danceability" name="danceability" placeholder="danceability">
+            
+            <label for="energy">energy:</label>
+            <input type="text" id="energy" name="energy" placeholder="energy">
+
+            <label for="instrumentalness">instrumentalness:</label>
+            <input type="text" id="instrumentalness" name="instrumentalness" placeholder="instrumentalness">
+
+            <label for="key">key:</label>
+            <input type="text" id="key" name="key" placeholder="key">
+
+            <label for="liveness">liveness:</label>
+            <input type="text" id="liveness" name="liveness" placeholder="liveness">
+
+            <label for="speechiness">speechiness:</label>
+            <input type="text" id="speechiness" name="speechiness" placeholder="speechiness">
+
+            <label for="tempo">tempo:</label>
+            <input type="text" id="tempo" name="tempo" placeholder="tempo">
+
+            <label for="valence">valence:</label>
+            <input type="valence" id="valence" name="valence" placeholder="valence">
+
+            
+            <button type="submit">Get Label!</button>
+
+        </form>
+
+    {% endif %}
+
+    <p class="predictedLabel">
+        {{ label }}
+    </p>
+
+    
+</body>
+</html>

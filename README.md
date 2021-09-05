@@ -3,5 +3,7 @@ Discover new favorites.
 
 # Instructions to run the app
 - ``` pip install pipenv ```
-- ``` pipenv install```
+- ``` pipenv check ```
+- ``` pipenv install ```
+- ``` pipenv shell ```
 - ``` flask run ```
