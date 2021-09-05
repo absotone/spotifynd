@@ -1,0 +1,2 @@
+# spotifynd
+Discover new favorites.
