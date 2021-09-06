@@ -14,32 +14,11 @@
 
         <form action="{{ url_for('predict')}}" method="post">
 
-            <label for="danceability">danceability:</label>
-            <input type="text" id="danceability" name="danceability" placeholder="danceability">
+            <label for="song_id">song_id:</label>
+            <input type="text" id="song_id" name="song_id" placeholder="song_id">
             
-            <label for="energy">energy:</label>
-            <input type="text" id="energy" name="energy" placeholder="energy">
-
-            <label for="instrumentalness">instrumentalness:</label>
-            <input type="text" id="instrumentalness" name="instrumentalness" placeholder="instrumentalness">
-
-            <label for="key">key:</label>
-            <input type="text" id="key" name="key" placeholder="key">
-
-            <label for="liveness">liveness:</label>
-            <input type="text" id="liveness" name="liveness" placeholder="liveness">
-
-            <label for="speechiness">speechiness:</label>
-            <input type="text" id="speechiness" name="speechiness" placeholder="speechiness">
-
-            <label for="tempo">tempo:</label>
-            <input type="text" id="tempo" name="tempo" placeholder="tempo">
-
-            <label for="valence">valence:</label>
-            <input type="valence" id="valence" name="valence" placeholder="valence">
-
-            
-            <button type="submit">Get Label!</button>
+                        
+            <button type="submit">Get Songs!</button>
 
         </form>
 

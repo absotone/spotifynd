@@ -10,6 +10,7 @@ pandas = "*"
 scikit-learn = "*"
 seaborn = "*"
 joblib = "*"
+requests = "*"
 
 [dev-packages]
 

@@ -3,10 +3,13 @@ from flask import Flask, render_template, request
 import pickle
 from numpy import mod
 import pandas as pd 
-
+from getsongdetails import SongData
+import creds
 from helpers import *
 
 model = loadModel("models/complexmodel.sav")
+
+songDataLoader = SongData(creds.CLIENT_ID,creds.CLIENT_SECRET)
 
 
 app = Flask(
@@ -23,18 +26,12 @@ def index():
 def predict():
     if request.method == "POST":
         
-        danceability = request.form.get("danceability")
-        energy = request.form.get("energy")
-        instrumentalness = request.form.get("instrumentalness")
-        key = request.form.get("key")
-        liveness = request.form.get("liveness")
-        speechiness = request.form.get("speechiness")
-        tempo = request.form.get("tempo")
-        valence = request.form.get("valence")
+        song_id = request.form.get("song_id")
+        song_features = songDataLoader.getSongFeatures(song_id)
 
         label = getLabel(model,
-                        getDataList(danceability, energy, instrumentalness, key, liveness, speechiness, tempo, valence))
-        songsList = getSongsWithLabel(label,5)
+                        song_features)
+        songsList = getSongsWithLabel(label,4)
 
         print(songsList)
         return render_template("predict.html",label = str(label), displayForm = False, songsList = songsList)
