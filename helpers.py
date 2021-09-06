@@ -26,7 +26,8 @@ def getLabel(model, inputValues):
 def getSongsWithLabel(label,numSongs=5):
     label = int(label)
     label_df = df[df["label"] == label]
-    return  (label_df.sample(numSongs)["name"])[:numSongs]
+
+    return  label_df.sample(numSongs)["id"][:numSongs]
 
 
 

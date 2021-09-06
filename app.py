@@ -11,6 +11,8 @@ model = loadModel("models/complexmodel.sav")
 
 songDataLoader = SongData(creds.CLIENT_ID,creds.CLIENT_SECRET)
 
+NUM_SONGS_SHOW = 10
+
 
 app = Flask(
     __name__,
@@ -18,11 +20,7 @@ app = Flask(
     static_folder="static"
 )
 
-@app.route("/")
-def index():
-    return render_template("index.html")
-
-@app.route("/predict/", methods = ["GET","POST"])
+@app.route("/", methods = ["GET","POST"])
 def predict():
     if request.method == "POST":
         
@@ -31,13 +29,13 @@ def predict():
 
         label = getLabel(model,
                         song_features)
-        songsList = getSongsWithLabel(label,4)
 
-        print(songsList)
-        return render_template("predict.html",label = str(label), displayForm = False, songsList = songsList)
+        
+        indexListRet = getSongsWithLabel(label,NUM_SONGS_SHOW)
+        return render_template("index.html",label = str(label), displayForm = False, indexList = indexListRet)
 
     else:
-        return render_template("predict.html", label = "", displayForm = True, songsList = [])
+        return render_template("index.html", label = "", displayForm = True, indexListRet = [])
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -4,10 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles.css">
-    <title>Spotifynd</title>
+    <link rel="stylesheet" href="../static/predict.css">
+    <title>Predictions</title>
 </head>
 <body>
-    <h1>Welcome to spotifynd.</h1>
+
+
+    {% if displayForm %}
+
+        <form action="{{ url_for('predict')}}" method="post">
+
+            <label for="song_id">song_id:</label>
+            <input type="text" id="song_id" name="song_id" placeholder="song_id">
+            
+                        
+            <button type="submit">Get Songs!</button>
+
+        </form>
+
+    {% endif %}
+
+  
+
+    {% for i in indexList %}
+
+    <iframe src="https://open.spotify.com/embed/track/{{i}}" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+    <br>
+    
+
+    {% endfor %}
+
+    {% if not displayForm %}
+        <a href="{{ url_for('predict')}}"> Try Again!</a>
+    {% endif %}
+    
 </body>
 </html>
