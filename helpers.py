@@ -1,5 +1,13 @@
 import pickle 
 import numpy as np 
+import pandas as pd
+
+
+"""
+    Load Dataset
+"""
+df = pd.read_csv("data/min.csv")
+
 
 
 """
@@ -21,5 +29,14 @@ def getDataList(danceability, energy, instrumentalness, key, liveness, speechine
 """
 def getLabel(model, inputValues):
     return model.predict(inputValues)[0]
+
+"""
+    Get songs with the same label
+"""
+def getSongsWithLabel(label,numSongs=5):
+    label = int(label)
+    label_df = df[df["label"] == label]
+    return  (label_df.sample(numSongs)["name"])[:numSongs]
+
 
 

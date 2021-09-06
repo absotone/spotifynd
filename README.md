@@ -6,4 +6,4 @@ Discover new favorites.
 - ``` pipenv check ```
 - ``` pipenv install ```
 - ``` pipenv shell ```
-- ``` flask run ```
+- ``` python app.py ```

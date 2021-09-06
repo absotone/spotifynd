@@ -6,7 +6,7 @@ import pandas as pd
 
 from helpers import *
 
-model = loadModel("models/simplemodel.sav")
+model = loadModel("models/complexmodel.sav")
 
 
 app = Flask(
@@ -34,8 +34,13 @@ def predict():
 
         label = getLabel(model,
                         getDataList(danceability, energy, instrumentalness, key, liveness, speechiness, tempo, valence))
+        songsList = getSongsWithLabel(label,5)
 
-        return render_template("predict.html",label = str(label), displayForm = False)
+        print(songsList)
+        return render_template("predict.html",label = str(label), displayForm = False, songsList = songsList)
 
     else:
-        return render_template("predict.html", label = "", displayForm = True)
+        return render_template("predict.html", label = "", displayForm = True, songsList = [])
+
+if __name__ == "__main__":
+    app.run(debug=True)
