@@ -5,22 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/styles.css">
-    <title>Predictions</title>
+    <title>Spotifynd</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet"> 
+
 </head>
-<body>
+<body style="background-color: #FDF4DC;">
+
+   
 
 
     {% if displayForm %}
 
-        <form action="{{ url_for('predict')}}" method="post">
+        <h1 class="maintitle" style="font-family: 'Indie Flower', cursive;">
+            Welcome to Spotifynd!
+        </h1>
 
-            <label for="song_id">song_id:</label>
-            <input type="text" id="song_id" name="song_id" placeholder="song_id">
-            
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <p class="maindescription" style=" font-family: 'Courier Prime', monospace;">
+            Harness the power of machine learning and find new favorites! 
+            <br>
+            Trained on over 1,300,000 data points, our <a href="https://github.com/absotone/spotifynd-classifier">Clustering Algorithm</a> recommends similar songs from 1921 to 2020. 
+            <br>
+            Just enter the spotify song ID of your favorite song, and <b>find new favorites</b> :)
+        </p>
+
+        <br>
+        <br>
+
+        <center>
+        
+        <div class="container-fluid">
+            <div class="row main-content bg-success text-center">
+                <div class="col-md-4 text-center company__info">
+                    
+                    <h4 class="company_title">Spotifynd</h4>
+                </div>
+                <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <h2>Find Similar Songs</h2>
+                        </div>
+                        <div class="row">
+                            <form control="" class="form-group" action="{{ url_for('predict')}}" method="post">
+                                <div class="row">
+                                    <input type="text" name="song_id" id="song_id" class="form__input" placeholder="Song ID">
+                                </div>
+                                
+                                <div class="row">
+                                    <input type="submit" value="Submit" class="btn">
+                                </div>
+                            </form>
+                        </div>
                         
-            <button type="submit">Get Songs!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        </form>
+    </center>
 
     {% endif %}
 
@@ -36,8 +92,22 @@
     {% endfor %}
 
     {% if not displayForm %}
-        <a href="{{ url_for('predict')}}"> Try Again!</a>
+        <a href="{{ url_for('predict')}}" class="button4"> Try Again!</a>
     {% endif %}
+
     
+
+	<!-- Footer -->
+	<div class="container-fluid text-center footer">
+        Source code for this project lives <a href="https://github.com/absotone/spotifynd">here.</a></p>
+    </div>
+
+
 </body>
 </html>
+
+
+
+
+
+
